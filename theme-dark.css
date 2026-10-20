@@ -1,0 +1,155 @@
+/* =========================================================
+   THEME DARK — hitam elegan (aksen emas lembut)
+   Dimuat paling akhir. Hapus <link> theme-dark.css untuk kembali ke tema terang.
+   ========================================================= */
+:root{
+    --bg:#0A0A0C; --surface:#131316; --surface-alt:#18181C; --surface-alt-2:#1E1E23;
+    --border:#26262C; --border-strong:#34343C;
+    --text-primary:#F2F0EA; --text-secondary:#A4A3AE; --text-muted:#6E6E7A;
+    --primary:#D4AF6A; --primary-2:#B8924A; --primary-dark:#B8924A; --primary-soft:rgba(212,175,106,.12);
+    --success:#5FC79A; --success-soft:rgba(95,199,154,.12);
+    --warning:#E3B05B; --warning-soft:rgba(227,176,91,.12);
+    --danger:#E0707F; --danger-soft:rgba(224,112,127,.12);
+    --archive:#B79BE0; --archive-soft:rgba(183,155,224,.12);
+    --shadow-xs:0 1px 2px rgba(0,0,0,.5); --shadow-sm:0 2px 8px rgba(0,0,0,.45);
+    --shadow-md:0 8px 24px rgba(0,0,0,.5); --shadow-lg:0 20px 48px rgba(0,0,0,.65);
+    --shadow-glow-primary:0 6px 18px rgba(212,175,106,.18);
+    color-scheme:dark;
+}
+body{ background:var(--bg); }
+::selection{ background:var(--primary); color:#111; }
+header.app-header{ background:rgba(10,10,12,.92); backdrop-filter:blur(10px); }
+.brand-mark{ background:linear-gradient(135deg,#E6C98A,#B8924A); color:#111; }
+.nav-main button.active, .tab.active{ background:var(--primary); color:#111; box-shadow:0 2px 10px rgba(212,175,106,.25); background-image:none; }
+.btn-primary{ background:linear-gradient(135deg,#E0BF7F,#B8924A); color:#141414; border:none; }
+.panel, .stat-card, .modal-box, .cf-batch-card{ background:var(--surface); border:1px solid var(--border); }
+.stat-card::before{ background:var(--primary) !important; }
+.stat-card .stat-icon{ background:var(--primary-soft) !important; color:var(--primary) !important; }
+input, select, textarea, .field input, .field select, .field textarea, .search-wrap input, .filter-select{
+    background:var(--surface-alt) !important; color:var(--text-primary) !important; border-color:var(--border) !important;
+}
+input:focus, select:focus, textarea:focus{ border-color:var(--primary) !important; box-shadow:0 0 0 3px var(--primary-soft) !important; }
+option{ background:#18181C; color:#F2F0EA; }
+
+/* tabel */
+#view-dashboard thead th, .cf-table thead th, thead th{ background:#17171B !important; color:#B9B7C2; border-bottom:1px solid var(--border-strong); }
+#tableBody tr:nth-child(even), #cfEntryBody tr:nth-child(even){ background:#101013; }
+tbody tr:hover{ background:#1C1B17 !important; }
+tbody td{ border-bottom:1px solid var(--border); }
+.cf-table tfoot td{ background:#17171B; }
+.cf-locked-note{ color:var(--warning); }
+.progress-track{ background:#25252B; }
+
+/* ---- tabel melebar ke samping, bisa di-scroll di HP; Aksi di ujung kanan ---- */
+.table-wrap{ overflow-x:auto; -webkit-overflow-scrolling:touch; border:1px solid var(--border); border-radius:12px; }
+.table-wrap table{ min-width:980px; }
+#dashboardTable{ min-width:1180px; }
+.aksi-pinned td.col-aksi, .aksi-pinned th.col-aksi{ position:sticky; right:0; z-index:3; background:#141417; box-shadow:-8px 0 12px -8px rgba(0,0,0,.7); }
+.aksi-pinned thead th.col-aksi{ z-index:4; background:#17171B !important; }
+.aksi-pinned #tableBody tr:hover td.col-aksi{ background:#1C1B17; }
+@media (max-width:640px){
+    .table-wrap{ border:1px solid var(--border) !important; max-height:none; }
+    .table-wrap table{ display:table; width:auto; }
+    .table-wrap thead{ display:table-header-group; }
+    .table-wrap tbody{ display:table-row-group; }
+    .table-wrap tfoot{ display:table-footer-group; }
+    .table-wrap tr{ display:table-row; }
+    .table-wrap th, .table-wrap td{ display:table-cell; width:auto; white-space:nowrap; text-align:left; }
+    .table-wrap tbody tr{ margin:0; border:none; border-radius:0; padding:0; box-shadow:none; background:transparent; flex-direction:row; }
+    .table-wrap tbody td{ display:table-cell !important; order:0 !important; border-bottom:1px solid var(--border); padding:11px 14px; text-align:left; font-size:13px; }
+    .table-wrap tbody td::before{ display:none !important; }
+    .table-wrap tbody td .actions-cell{ flex-wrap:nowrap; width:auto; justify-content:flex-start; }
+    .table-wrap tbody td .progress-track{ width:140px; }
+    .table-wrap tbody td:first-child{ display:table-cell !important; }
+    .table-wrap td .keterangan-text{ max-width:200px; }
+    .copy-tag, .badge{ white-space:nowrap; }
+    .cf-table tfoot tr{ display:table-row; background:transparent; padding:0; margin:0; }
+    .cf-table tfoot td:empty{ display:table-cell; }
+    .cf-table td.num{ text-align:right; }
+}
+
+/* ---- statistik ---- */
+.chart-box{ position:relative; height:320px; }
+.chart-box.sm{ height:260px; }
+.st-grid{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+.st-kpi{ grid-template-columns:repeat(4,1fr); }
+@media (max-width:900px){ .st-grid{ grid-template-columns:1fr; } .st-kpi{ grid-template-columns:1fr 1fr; } }
+
+.chart-box.xs{ height:200px; }
+.dash-stats{ margin-bottom:18px; }
+
+/* =========================================================
+   TABEL GAYA EXCEL — kompak, bergaris, tulisan kecil
+   ========================================================= */
+.table-section .panel-title{ font-size:13px; margin-bottom:12px; padding-bottom:10px; }
+.table-section .toolbar .btn{ padding:7px 12px; font-size:12px; }
+.table-section .search-wrap input, .table-section .filter-select{ font-size:12px; padding-top:8px; padding-bottom:8px; }
+
+.table-wrap table{ border-collapse:collapse; border-spacing:0; }
+.table-wrap th, .table-wrap td,
+.table-wrap tbody td{ border:1px solid var(--border) !important; padding:5px 10px !important; font-size:12px !important; line-height:1.35; }
+.table-wrap thead th{ font-size:10.5px !important; text-transform:uppercase; letter-spacing:.04em; padding:7px 10px !important; background:#1A1A1F !important; color:#C9C7D2; }
+.table-wrap tbody tr:nth-child(even) td{ background:#0F0F12; }
+.table-wrap tbody tr:nth-child(odd) td{ background:#131316; }
+.table-wrap tbody tr:hover td{ background:#211F18 !important; }
+
+/* kolom No seperti header baris Excel */
+.table-wrap td.col-no, #dashboardTable tbody td:first-child{ background:#1A1A1F !important; color:#8A8896; text-align:center !important; font-weight:600; width:40px; min-width:40px; position:sticky; left:0; z-index:2; }
+#dashboardTable thead th:first-child{ position:sticky; left:0; z-index:4; text-align:center; }
+
+.table-wrap .customer-name{ font-size:12px; font-weight:600; }
+.table-wrap .cell-sub{ font-size:10.5px; }
+.table-wrap .copy-tag{ font-size:11.5px; padding:2px 8px; }
+.table-wrap .badge{ font-size:10.5px; padding:2px 8px; }
+.table-wrap .sisa-pill{ font-size:11px; padding:2px 8px; }
+.table-wrap .progress-text{ font-size:11px; }
+.table-wrap .progress-track{ height:4px; }
+.table-wrap .progress-cell{ min-width:120px; }
+.table-wrap .keterangan-text{ font-size:11px; max-width:260px; }
+.table-wrap .btn-icon{ width:26px; height:26px; min-width:26px; padding:0; font-size:12px; }
+.table-wrap .btn-archive.btn-wrap{ padding:4px 9px !important; font-size:11px !important; }
+.table-wrap .actions-cell{ gap:4px; }
+@media (max-width:640px){
+    .table-wrap th, .table-wrap td, .table-wrap tbody td{ padding:5px 9px !important; font-size:12px !important; }
+    .table-wrap tbody tr:nth-child(even) td{ background:#0F0F12; }
+    .table-wrap tbody td:first-child{ background:#1A1A1F !important; }
+    .table-wrap tbody td .progress-track{ width:110px; }
+    .st-grid.dash-stats{ grid-template-columns:1fr; }
+}
+
+/* =========================================================
+   TIPOGRAFI (acuan: praktik dashboard — 1 font, 2 bobot, 4 ukuran, angka tabular)
+   Inter · ukuran: 11 (label) · 12 (isi tabel) · 14 (judul panel) · 24 (angka KPI)
+   ========================================================= */
+:root{ --font-display:'Inter', -apple-system, BlinkMacSystemFont, sans-serif; --font-body:'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+body{ font-size:13px; font-weight:500; font-variant-numeric:tabular-nums; letter-spacing:-.003em; }
+h1,h2,h3,.panel-title,.stat-card span.value,.brand-text h1,.cf-batch-name,.cf-batch-total{ font-family:var(--font-display); font-variant-numeric:tabular-nums; }
+.panel-title{ font-size:14px; font-weight:700; letter-spacing:-.01em; }
+.stat-card h3{ font-size:11px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--text-secondary); }
+.stat-card span.value{ font-size:24px; font-weight:700; }
+.panel-hint, .cell-sub, .chart-sub{ font-size:11px; }
+label, .field label{ font-size:11px; font-weight:600; letter-spacing:.04em; text-transform:uppercase; color:var(--text-secondary); }
+.cf-table .num, .table-wrap td.num{ font-variant-numeric:tabular-nums; text-align:right; }
+.chart-sub{ color:var(--text-secondary); font-weight:600; margin-bottom:8px; text-transform:uppercase; letter-spacing:.05em; }
+
+/* panel kaca halus + jarak lega agar tidak menumpuk */
+.panel{ background:linear-gradient(180deg,#141418,#111114); border:1px solid var(--border); border-radius:14px; padding:18px; margin-bottom:16px; box-shadow:0 1px 0 rgba(255,255,255,.03) inset, 0 8px 24px rgba(0,0,0,.35); }
+.stat-card{ border-radius:12px; }
+.stats{ gap:12px; }
+
+/* panel bisa dilipat */
+.cz-title{ cursor:pointer; user-select:none; display:flex; align-items:center; gap:8px; }
+.cz-caret{ margin-left:8px; color:var(--text-muted); font-size:12px; transition:transform .18s ease; }
+.panel.collapsed .cz-caret{ transform:rotate(-90deg); }
+.panel.collapsed > *:not(.panel-title){ display:none !important; }
+.panel.collapsed > .panel-title{ margin-bottom:0; padding-bottom:0; border-bottom:none; }
+.cz-title:hover{ color:var(--primary); }
+#view-cashflow .table-wrap td.col-no{ position:static; }
+
+/* Farm Sell */
+.mono{ font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace !important; font-size:11.5px !important; letter-spacing:0; }
+#fsTable td.mono{ user-select:all; }
+code{ font-family:ui-monospace,Menlo,monospace; background:var(--surface-alt-2); padding:1px 5px; border-radius:4px; font-size:11px; color:var(--primary); }
+#view-farmsell textarea{ width:100%; }
+#view-farmsell .st-grid{ grid-template-columns:2fr 1fr; align-items:start; }
+@media (max-width:900px){ #view-farmsell .st-grid{ grid-template-columns:1fr; } }
